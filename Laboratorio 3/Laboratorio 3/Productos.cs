@@ -9,8 +9,8 @@ namespace Laboratorio_3
     //listas y partes del objeto
     class Productos
     {
-        private List<Productos> Carrito = new List<Productos>();
-        public List<Productos> carrito
+        private List<string> Carrito = new List<string>();
+        public List<string> carrito
         {
             get => Carrito;
             set => Carrito = carrito;
@@ -27,7 +27,7 @@ namespace Laboratorio_3
             get => Nombre;
             set
             {
-                nombre = Nombre;
+                Nombre = nombre;
             }
 }
 
@@ -37,7 +37,7 @@ namespace Laboratorio_3
             get => Cantidad;
             set
             {
-                cantidad = Cantidad;
+                Cantidad = cantidad;
             }
 }
 
@@ -47,7 +47,7 @@ namespace Laboratorio_3
             get => Precio;
             set
             {
-                precio = Precio;
+                Precio = precio;
             }
 }
 
@@ -75,6 +75,7 @@ namespace Laboratorio_3
         }
 
 
+        
 
 
     }

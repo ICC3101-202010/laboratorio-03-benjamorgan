@@ -17,49 +17,49 @@ namespace Laboratorio_3
         }
 
 
-        private string Nombre;
+        protected string Nombre;
         public string nombre
         {
             get => Nombre;
             set
             {
-                nombre = Nombre;
+                Nombre = nombre;
             }
         }
-        private string Rut;
+        protected string Rut;
         public string rut
         {
             get => Rut;
             set
             {
-                rut = Rut;
+                Rut = rut;
             }
         }
-        private string Apellido;
+        protected string Apellido;
         public string apellido
         {
             get => Apellido;
             set
             {
-                apellido = Apellido;
+                Apellido = apellido;
             }
         }
-        private string Fechanacimiento;
+        protected string Fechanacimiento;
         public string fechanacimiento
         {
             get => Fechanacimiento;
             set
             {
-                fechanacimiento = Fechanacimiento;
+                Fechanacimiento = fechanacimiento;
             }
         }
-        private string Nacionalidad;
+        protected string Nacionalidad;
         public string nacionalidad
         {
             get => Nacionalidad;
             set
             {
-                nacionalidad = Nacionalidad;
+                Nacionalidad = nacionalidad;
             }
         }
 
@@ -74,11 +74,30 @@ namespace Laboratorio_3
             Fechanacimiento = birthdate;
 
         }
-        public string Informacion()
+
+        public Personas()
+        {
+        }
+        public string  Informacion()
         {
 
-            return "Nombre: " + Nombre + ", Apellido " + Apellido + ", Rut " + Rut+", Fecha de nacimiento " + fechanacimiento + ", Nacionalidad " + Nacionalidad;
+            return "Nombre: " + Nombre + ", Apellido " + Apellido + ", Rut " + Rut+", Fecha de nacimiento " + Fechanacimiento + ", Nacionalidad " + Nacionalidad;
 
+
+        }
+
+        public Personas buscarpersona(string buscado)
+        {
+            Personas persona0 = new Personas("", "", "", "", "");
+
+            for (int i = 0; i < todaslaspersonas.Count(); i++)
+            {
+                if (todaslaspersonas[i].Nombre == buscado)
+                {
+                    return todaslaspersonas[i];
+                }
+            }
+            return persona0;
 
         }
 
