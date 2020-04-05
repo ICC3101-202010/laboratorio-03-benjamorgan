@@ -36,6 +36,15 @@ namespace Laboratorio_3
                 Nombre = nombre;
             }
 }
+        private string Marca;
+        public string marca
+        {
+            get => Marca;
+            set
+            {
+                Marca = marca;
+            }
+        }
 
         private int Cantidad;
 
@@ -53,11 +62,12 @@ namespace Laboratorio_3
         public int cantidad { get => Cantidad; set => Cantidad = value; }
 
         //constructor
-        public Productos(string name, int stock, int price)
+        public Productos(string name, int stock, int price, string marca )
 {
             Nombre = name;
             Cantidad = stock;
             Precio = price;
+            Marca = marca;
 }
 
         public Productos()
@@ -70,7 +80,7 @@ namespace Laboratorio_3
         public string Informacion()
         {
 
-            return   "Producto: " + Nombre  +", Precio "+ Precio+ ", Stock disponible "+ Cantidad;
+            return   "Producto: " + Nombre  +", Precio "+ Precio+ ", Stock disponible "+ Cantidad+", Marca:"+ Marca;
             
 
         }
