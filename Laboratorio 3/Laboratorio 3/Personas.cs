@@ -16,6 +16,13 @@ namespace Laboratorio_3
             set => Todaslaspersonas = todaslaspersonas;
         }
 
+        private List<Personas> Cajeros = new List<Personas> { };
+        public List<Personas> cajeros
+        {
+            get => Cajeros;
+            set => Cajeros = cajeros;
+        }
+
 
         protected string Nombre;
         public string nombre

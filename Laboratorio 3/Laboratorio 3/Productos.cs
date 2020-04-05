@@ -21,6 +21,12 @@ namespace Laboratorio_3
             get => Todoslosproductos;
             set => Todoslosproductos = todoslosproductos;
         }
+        private List<string> Todaslasboletas = new List<string>();
+        public List<string> todaslasboletas
+        {
+            get => Todaslasboletas;
+            set => Todaslasboletas = todaslasboletas;
+        }
         private string Nombre;
         public string nombre
 {
@@ -32,14 +38,7 @@ namespace Laboratorio_3
 }
 
         private int Cantidad;
-        public int cantidad
-{
-            get => Cantidad;
-            set
-            {
-                Cantidad = cantidad;
-            }
-}
+
 
         private int Precio;
         public int precio
@@ -50,6 +49,8 @@ namespace Laboratorio_3
                 Precio = precio;
             }
 }
+
+        public int cantidad { get => Cantidad; set => Cantidad = value; }
 
         //constructor
         public Productos(string name, int stock, int price)
@@ -73,9 +74,20 @@ namespace Laboratorio_3
             
 
         }
+        public int Sumacarrito()
+        {
+            int Suma = 0;
+            for (int i = 2; i < carrito.LongCount(); i+=3)
+            {
+                Suma += (Convert.ToInt32(carrito[i]) * Convert.ToInt32(carrito[i-1]));
+            }
+
+            return Suma;
 
 
-        
+        }
+
+
 
 
     }
