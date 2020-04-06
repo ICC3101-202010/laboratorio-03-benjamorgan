@@ -15,6 +15,12 @@ namespace Laboratorio_3
             get => Carrito;
             set => Carrito = carrito;
         }
+        private List<string> Carritobot = new List<string>();
+        public List<string> carritobot
+        {
+            get => Carritobot;
+            set => Carritobot = carritobot;
+        }
         private List<Productos> Todoslosproductos = new List<Productos>();
         public List<Productos> todoslosproductos
         {
@@ -130,7 +136,18 @@ namespace Laboratorio_3
 
 
         }
+        public int Sumacarritobot()
+        {
+            int Suma = 0;
+            for (int i = 3; i < carritobot.LongCount(); i += 4)
+            {
+                Suma += (Convert.ToInt32(carritobot[i]) * Convert.ToInt32(carritobot[i - 1]));
+            }
 
+            return Suma;
+
+
+        }
 
 
 

@@ -84,8 +84,9 @@ namespace Laboratorio_3
                             Console.WriteLine("Ingrese el sueldo del trabajador");
                             string produ = Console.ReadLine();
                             int paga = Convert.ToInt32(produ);
-                            Personas j = persona1.buscarpersona(resp);
+                            Personas j = persona1.buscarpersona(persona1.todaslaspersonas[Convert.ToInt32(resp)].nombre);
                             Trabajadores traba = new Trabajadores(j.nombre, j.apellido, j.rut, j.nacionalidad, j.fechanacimiento, puesto, paga);
+                            Console.WriteLine(j.nombre+ j.apellido+ j.rut+ j.nacionalidad+ j.fechanacimiento+ puesto+ paga);
                             trabajador0.todoslostrabajadores.Add(traba);
                             Console.WriteLine("Se ascendido a " + persona1.todaslaspersonas[Convert.ToInt32(resp)].nombre + " a " + puesto);
                             break;
@@ -161,7 +162,7 @@ namespace Laboratorio_3
                                                 Console.WriteLine(Convert.ToString("(" + (i) + ")") + " " + producto1.todoslosproductos[i].nombre + " stock: " + producto1.todoslosproductos[i].cantidad + " Precio: " + producto1.todoslosproductos[i].precio);
                                             }
                                             string producto = Console.ReadLine();
-                                            Console.WriteLine("cuanto stock del producto quiere agregar?? (ingrese 0 si no quiere el producto) ");
+                                            Console.WriteLine("cuanto stock del producto quiere agregar?? ");
                                             string cant = Console.ReadLine();
                                             int casos3 = 0;
                                             int.TryParse(cant, out casos3);
@@ -170,7 +171,7 @@ namespace Laboratorio_3
                                             if (casos3 != 0)
                                             {
 
-                                                if (casos4 == 0)
+                                                if (casos4 >= 0)
                                                 {
 
                                                     if (producto1.todoslosproductos[Convert.ToInt32(producto)].cantidad - Convert.ToInt32(cant) >= 0)
@@ -268,9 +269,10 @@ namespace Laboratorio_3
                             break;
                         }
 
-                    case 8:
+                    case 8: //bonus
                         {
                             //creacion clientes
+                            Console.WriteLine("");
                             Random rndname = new Random();
                             for (int i = 0; i < 15; i++)
                             {
@@ -291,19 +293,12 @@ namespace Laboratorio_3
 
                             for (int i = 0; i < 6; i++)
                             {
-                                
-                                int botnamae = rndname.Next(0, 30);
-                               
+                                int botnamae = rndname.Next(0, 30);                             
                                 int botlnamae = rndname.Next(0, 30);
-
                                 int botrun = rndname.Next(0, 30);
- 
                                 int botdate = rndname.Next(0, 30);
-
                                 int botnacio = rndname.Next(0, 30);
-
                                 int botpuesto = rndname.Next(0, 3);
-
                                 int botpaga = rndname.Next(0, 4);
                                 Trabajadores SujetodePruebas = new Trabajadores(persona1.botsname[botnamae], persona1.botslname[botlnamae], persona1.botsrut[botrun], persona1.botsdate[botdate], persona1.botsnacionality[botnacio],trabajador0.botspuesto[botpuesto],trabajador0.botspaga[botpaga]);
                                 trabajador0.empleadosauto.Add(SujetodePruebas);
@@ -314,13 +309,9 @@ namespace Laboratorio_3
                             //creacion productos
                             for (int i = 0; i < 30; i++)
                             {
-                                
-                                int produnamae = rndname.Next(0, 40);
-                                
-                                int produmark = rndname.Next(0, 10);
-                               
-                                int produprecio = rndname.Next(0, 10);
-                                
+                                int produnamae = rndname.Next(0, 40);                                
+                                int produmark = rndname.Next(0, 10);                              
+                                int produprecio = rndname.Next(0, 10);                              
                                 int produstock = rndname.Next(0, 8);
                                 Productos Productoprueba = new Productos(producto1.nombreprodu[produnamae], producto1.stockprodu[produstock], producto1.precioprodu[produprecio], producto1.marcaprodu[produmark]);
                                 producto1.productossimulacion.Add(Productoprueba);
@@ -329,20 +320,59 @@ namespace Laboratorio_3
                             {
                                 Console.WriteLine(persona1.bots[i].Informacion());
                             }
+                            Console.WriteLine("");
                             for (int i = 0; i < trabajador0.empleadosauto.LongCount(); i++)
                             {
                             Console.WriteLine(trabajador0.empleadosauto[i].Informacion());
                             }
+                            Console.WriteLine("");
                             for (int i = 0; i < producto1.productossimulacion.LongCount(); i++)
                             {
                                 Console.WriteLine(producto1.productossimulacion[i].Informacion());
                             }
+                            Console.WriteLine("");
+                            for (int i = 0; i < 5; i++)
+                            {
+
+                            
+                            Console.WriteLine("Hola estimado cliente, Me permite su cedula de identidad?");
+                            int bot = rndname.Next(0, 15);
+                            int cajero = rndname.Next(0, 7);
+                            Console.WriteLine(persona1.bots[bot].Informacion()); 
+                            Console.WriteLine(persona1.bots[bot].nombre + ", Muchas gracias por comprar en mallwart");
+                            for (int K = 0; K < 5; K++)
+                            {
+                                int producto = rndname.Next(0, 30);
+                                int cantidad = rndname.Next(0, 15); //cada uno se puede llevar maximo 15 de cada producto
+                                producto1.carritobot.Add(producto1.productossimulacion[producto].nombre);
+                                producto1.carritobot.Add(producto1.productossimulacion[producto].marca);
+                                producto1.carritobot.Add(Convert.ToString(cantidad));
+                                producto1.productossimulacion[producto].cantidad -=cantidad ;
+                                producto1.carritobot.Add(Convert.ToString(producto1.productossimulacion[producto].precio));
+                            }
+                            Console.WriteLine("yo " + trabajador0.empleadosauto[cajero].nombre + " " + trabajador0.empleadosauto[cajero].apellido + " lo atendere como su cajero el dia de hoy, veamos que es lo que trae...");
+                            Console.WriteLine("Tome aqui esta su boleta");
+                            Console.WriteLine("");
+                            for (int Q = 0; Q < producto1.carritobot.LongCount(); Q+=4)
+                            {
+                                Console.WriteLine("Producto: " + producto1.carritobot[Q] +" Marca: "+producto1.carritobot[Q+1]+ ", Cantidad " + producto1.carritobot[Q+2] + ", Precio individual: " + producto1.carritobot[Q+3]);
+                                
+                            }            
+                            Console.WriteLine("el total de su compra fue " + producto1.Sumacarritobot() + " " + DateTime.Now.ToString("MM/dd/yyyy HH:mm"));
+                            Console.WriteLine("--------------------------");
+                            Console.WriteLine("Gracias por comprar, " + persona1.bots[bot].nombre + " " + persona1.bots[bot].apellido);
+                            Console.WriteLine("Atendido por: " + trabajador0.empleadosauto[cajero].nombre + " " + trabajador0.empleadosauto[cajero].apellido);
+                            producto1.carritobot.Clear();
+                            Console.WriteLine("");
 
 
+                                Console.WriteLine("");
 
-
-
-
+                            }
+                            for (int p = 0; p < producto1.productossimulacion.LongCount(); p++)
+                            {
+                                Console.WriteLine(producto1.productossimulacion[p].Informacion());
+                            }
                             break; 
                         }
                     case 9:
