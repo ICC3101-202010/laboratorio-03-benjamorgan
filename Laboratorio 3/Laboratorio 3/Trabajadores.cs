@@ -16,6 +16,25 @@ namespace Laboratorio_3
             get => Todoslostrabajadores;
             set => Todoslostrabajadores = todoslostrabajadores;
         }
+        private List<Trabajadores> Empleadosauto = new List<Trabajadores> { };
+        public List<Trabajadores> empleadosauto
+        {
+            get => Empleadosauto;
+            set => Empleadosauto = empleadosauto;
+        }
+        private List<string> Botspuesto = new List<string> {"Cajero","Auxiliar","Reponedor"};
+        public List<string> botspuesto
+        {
+            get => Botspuesto;
+            set => Botspuesto = botspuesto;
+        }
+        //paga en mono-dolares (y al pasar por el banco solo dan 30)
+        private List<int> Botspaga = new List<int> { 150,100, 80,200 };
+        public List<int> botspaga
+        {
+            get => Botspaga;
+            set => Botspaga = botspaga;
+        }
 
         private string Puestodetrabajo;
         public string puestodetrabajo
