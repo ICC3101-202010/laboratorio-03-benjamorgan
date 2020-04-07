@@ -21,7 +21,7 @@ namespace Laboratorio_3
             persona1.todaslaspersonas.Add(persona2);
             Productos producto1 = new Productos("Coca-cola 1 litro", 100, 1000, "Cocacola Company");
             producto1.todoslosproductos.Add(producto1);
-            Trabajadores trabajador0 = new Trabajadores("john", "sinna", "19.696.954-2", "gringo", "01/02/85", "Cajero", 100);
+            Trabajadores trabajador0 = new Trabajadores("john", "sinna", "19.696.954-2", "gringo", "01/02/85", "Cajero", 100, "24 horas");
             Personas persona0 = new Personas("john", "sinna", "19.696.954-2", "gringo", "01/02/85");
             persona1.todaslaspersonas.Add(persona0);
             trabajador0.todoslostrabajadores.Add(trabajador0);
@@ -84,8 +84,10 @@ namespace Laboratorio_3
                             Console.WriteLine("Ingrese el sueldo del trabajador");
                             string produ = Console.ReadLine();
                             int paga = Convert.ToInt32(produ);
+                            Console.WriteLine("ingrese el horario de trabajo del trabajador");
+                            string horario =Console.ReadLine() ;
                             Personas j = persona1.buscarpersona(persona1.todaslaspersonas[Convert.ToInt32(resp)].nombre);
-                            Trabajadores traba = new Trabajadores(j.nombre, j.apellido, j.rut, j.nacionalidad, j.fechanacimiento, puesto, paga);
+                            Trabajadores traba = new Trabajadores(j.nombre, j.apellido, j.rut, j.nacionalidad, j.fechanacimiento, puesto, paga, horario);
                             Console.WriteLine(j.nombre+ j.apellido+ j.rut+ j.nacionalidad+ j.fechanacimiento+ puesto+ paga);
                             trabajador0.todoslostrabajadores.Add(traba);
                             Console.WriteLine("Se ascendido a " + persona1.todaslaspersonas[Convert.ToInt32(resp)].nombre + " a " + puesto);
@@ -300,11 +302,11 @@ namespace Laboratorio_3
                                 int botnacio = rndname.Next(0, 30);
                                 int botpuesto = rndname.Next(0, 3);
                                 int botpaga = rndname.Next(0, 4);
-                                Trabajadores SujetodePruebas = new Trabajadores(persona1.botsname[botnamae], persona1.botslname[botlnamae], persona1.botsrut[botrun], persona1.botsdate[botdate], persona1.botsnacionality[botnacio],trabajador0.botspuesto[botpuesto],trabajador0.botspaga[botpaga]);
+                                Trabajadores SujetodePruebas = new Trabajadores(persona1.botsname[botnamae], persona1.botslname[botlnamae], persona1.botsrut[botrun], persona1.botsdate[botdate], persona1.botsnacionality[botnacio],trabajador0.botspuesto[botpuesto],trabajador0.botspaga[botpaga], "24 horas");
                                 trabajador0.empleadosauto.Add(SujetodePruebas);
                             }
                             //me aseguro de que siempre halla un cajero (es importante)
-                            Trabajadores Empleadopromedio = new Trabajadores("Keannue", "Rieves", "19.696.954-2", "gringo", "01/02/85", "Cajero", 100);
+                            Trabajadores Empleadopromedio = new Trabajadores("Keannue", "Rieves", "19.696.954-2", "gringo", "01/02/85", "Cajero", 100, "24 horas");
                             trabajador0.empleadosauto.Add(Empleadopromedio);
                             //creacion productos
                             for (int i = 0; i < 30; i++)

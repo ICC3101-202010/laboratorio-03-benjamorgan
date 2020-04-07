@@ -54,8 +54,16 @@ namespace Laboratorio_3
                 Sueldo = sueldo;
             }
         }
-
-        public Trabajadores(string name, string lastname, string run, string nacionality, string birthdate, string puesto,int paga)
+        private string Horario;
+        public string horario
+        {
+            get => Horario;
+            set
+            {
+                Horario = horario;
+            }
+        }
+        public Trabajadores(string name, string lastname, string run, string nacionality, string birthdate, string puesto,int paga, string horario)
         {
             Nombre = name;
             Apellido = lastname;
@@ -64,12 +72,13 @@ namespace Laboratorio_3
             Fechanacimiento = birthdate;
             Puestodetrabajo = puesto;
             Sueldo = paga;
+            Horario = horario;
 
         }
         public new string  Informacion()
         {
             
-            return "Trabajador: "+ nombre +" "+ apellido + ", Con el puesto: "+ puestodetrabajo + ","+ " sueldo: " +Sueldo ;
+            return "Trabajador: "+ nombre +" "+ apellido + ", Con el puesto: "+ puestodetrabajo + ","+ " sueldo: " +Sueldo + ", Horario: "+ Horario ;
 
 
         }
